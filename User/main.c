@@ -6,30 +6,12 @@
 int main(void){
 	
 	OLED_Init();
-	for(uint8_t j = 0; j < 8; j ++){
-		OLED_SetCursor(0, j);
-		for(uint8_t i = 0; i < 128; i++){
-			OLED_WriteData(0x00);
-		}
-	}
-	OLED_SetCursor(10,2);
-	OLED_WriteData(0x55);
-	OLED_WriteData(0x55);
-	OLED_WriteData(0x55);
-	OLED_WriteData(0x55);
-	OLED_WriteData(0x55);
-	OLED_WriteData(0x55);
-	OLED_WriteData(0x55);
-	OLED_WriteData(0x55);
-	OLED_WriteData(0x55);
-	OLED_WriteData(0x55);
-	OLED_WriteData(0x55);
-	OLED_WriteData(0x55);
-	OLED_WriteData(0x55);
-	OLED_WriteData(0x55);
-	OLED_WriteData(0x55);
-	OLED_WriteData(0x55);
-	OLED_WriteData(0x55);
+	OLED_Clear();
+	
+	OLED_ShowChar(0,0, '#',6);
+	OLED_ShowChar(0,1,'#',8);
+	
+
 
 	while(1){
 		

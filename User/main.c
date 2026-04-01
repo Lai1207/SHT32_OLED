@@ -3,18 +3,22 @@
 #include "MyI2c.h"
 #include "LED.h"
 #include "OLED.h"
+
 int main(void){
 	
 	OLED_Init();
 	OLED_Clear();
 	
-	OLED_ShowChar(0,0, '#',6);
-	OLED_ShowChar(0,1,'#',8);
+	//OLED_ShowChar(0,0, '#',6);
+	//OLED_ShowChar(0,1,'#',8);
 	
-
+	//OLED_ShowString(0,2,"Hello World",6);
+	//OLED_ShowImage(0, 0, 64, 8, font_data);
+	OLED_ShowChinese(0, 0,"賴");
 
 	while(1){
 		
 	}
 }
- 
+
+

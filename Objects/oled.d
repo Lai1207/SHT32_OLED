@@ -30,3 +30,5 @@
 .\objects\oled.o: .\Library\misc.h
 .\objects\oled.o: Hardware\MyI2c.h
 .\objects\oled.o: .\System\Delay.h
+.\objects\oled.o: Hardware\OLED_Data.h
+.\objects\oled.o: D:\Keil5\ARM\ARMCC\Bin\..\include\String.h

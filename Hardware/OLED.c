@@ -4,7 +4,15 @@
 #include "OLED_Data.h"
 #include <String.h>
 
+void OLED_SetCursor(uint8_t x, uint8_t page);
 
+uint32_t Pow(uint32_t x, uint32_t y){
+	uint32_t result = 1;
+	while(y--){
+		result *= x;
+	}
+	return result;
+}
 void OLED_WriteCommand(uint8_t Command){
 	
 	MyI2C_Start();
@@ -33,6 +41,14 @@ void OLED_WriteData(uint8_t Data){
 	MyI2C_ReceiveAck();
 	MyI2C_Stop();
 	
+}
+void OLED_Clear(void){
+	for(uint8_t j = 0; j < 8; j ++){
+		OLED_SetCursor(0, j);
+		for(uint8_t i = 0; i < 128; i++){
+			OLED_WriteData(0x00);
+		}
+	}
 }
 
 void OLED_Init(void){
@@ -78,6 +94,8 @@ void OLED_Init(void){
 	
 	Delay_ms(100);
 	
+	OLED_Clear();
+	
 }
 
 void OLED_SetCursor(uint8_t x, uint8_t page){												//x 0-128 page 0-7
@@ -87,14 +105,7 @@ void OLED_SetCursor(uint8_t x, uint8_t page){												//x 0-128 page 0-7
 
 }
 
-void OLED_Clear(void){
-	for(uint8_t j = 0; j < 8; j ++){
-		OLED_SetCursor(0, j);
-		for(uint8_t i = 0; i < 128; i++){
-			OLED_WriteData(0x00);
-		}
-	}
-}
+
 
 /*
 OLED_F6X8[8][6]
@@ -186,5 +197,10 @@ void OLED_ShowChinese(uint8_t x, uint8_t page, char *Chinese){
 			
 		}
 	
+	}
+}
+void OLED_ShowNum(uint8_t x, uint8_t y, uint32_t num, uint8_t length, uint8_t fontsize){
+	for(uint8_t i = 0; i < length; i++){
+		OLED_ShowChar((x+i)*fontsize, y,  num / Pow(10, length - i - 1) % 10 + '0', fontsize);
 	}
 }

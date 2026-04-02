@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Thu Apr 02 13:24:50 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Thu Apr 02 13:36:19 2026
 <BR><P>
-<H3>Maximum Stack Usage =        112 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        120 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-__rt_entry_main &rArr; main &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_SetCursor &rArr; OLED_WriteCommand &rArr; MyI2C_SendByte &rArr; Myi2c_w_sda
+__rt_entry_main &rArr; main &rArr; OLED_ShowChinese &rArr; OLED_ShowImage &rArr; OLED_SetCursor &rArr; OLED_WriteCommand &rArr; MyI2C_SendByte &rArr; Myi2c_w_sda
 <P>
 <H3>
 Functions with no stack information
@@ -188,8 +188,8 @@ Global Symbols
 <P><STRONG><a name="[85]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[42]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_SetCursor &rArr; OLED_WriteCommand &rArr; MyI2C_SendByte &rArr; Myi2c_w_sda
+<BR><BR>[Stack]<UL><LI>Max Depth = 120 + Unknown Stack Size
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; OLED_ShowChinese &rArr; OLED_ShowImage &rArr; OLED_SetCursor &rArr; OLED_WriteCommand &rArr; MyI2C_SendByte &rArr; Myi2c_w_sda
 </UL>
 <BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -349,6 +349,10 @@ Global Symbols
 </UL>
 <P><STRONG><a name="[4a]"></a>__user_initial_stackheap</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup_stm32f10x_md.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
+</UL>
+
+<P><STRONG><a name="[61]"></a>strcmp</STRONG> (Thumb, 128 bytes, Stack size 0 bytes, strcmpv7m.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowChinese
 </UL>
 
 <P><STRONG><a name="[88]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
@@ -547,26 +551,26 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_WriteCommand
 </UL>
-<BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowChar
+<BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowImage
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Clear
 </UL>
 
-<P><STRONG><a name="[60]"></a>OLED_ShowChar</STRONG> (Thumb, 144 bytes, Stack size 24 bytes, oled.o(i.OLED_ShowChar))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = OLED_ShowChar &rArr; OLED_SetCursor &rArr; OLED_WriteCommand &rArr; MyI2C_SendByte &rArr; Myi2c_w_sda
+<P><STRONG><a name="[60]"></a>OLED_ShowChinese</STRONG> (Thumb, 144 bytes, Stack size 40 bytes, oled.o(i.OLED_ShowChinese))
+<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = OLED_ShowChinese &rArr; OLED_ShowImage &rArr; OLED_SetCursor &rArr; OLED_WriteCommand &rArr; MyI2C_SendByte &rArr; Myi2c_w_sda
+</UL>
+<BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowImage
+</UL>
+<BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[62]"></a>OLED_ShowImage</STRONG> (Thumb, 66 bytes, Stack size 32 bytes, oled.o(i.OLED_ShowImage))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = OLED_ShowImage &rArr; OLED_SetCursor &rArr; OLED_WriteCommand &rArr; MyI2C_SendByte &rArr; Myi2c_w_sda
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_WriteData
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_SetCursor
 </UL>
-<BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowNum
-</UL>
-
-<P><STRONG><a name="[61]"></a>OLED_ShowNum</STRONG> (Thumb, 76 bytes, Stack size 32 bytes, oled.o(i.OLED_ShowNum))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_SetCursor &rArr; OLED_WriteCommand &rArr; MyI2C_SendByte &rArr; Myi2c_w_sda
-</UL>
-<BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pow
-<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowChar
-</UL>
-<BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowChinese
 </UL>
 
 <P><STRONG><a name="[5f]"></a>OLED_WriteCommand</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, oled.o(i.OLED_WriteCommand))
@@ -589,19 +593,13 @@ Global Symbols
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MyI2C_SendByte
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MyI2C_ReceiveAck
 </UL>
-<BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowChar
+<BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowImage
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Clear
 </UL>
 
 <P><STRONG><a name="[b]"></a>PendSV_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.PendSV_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[62]"></a>Pow</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, oled.o(i.Pow))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Pow
-</UL>
-<BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowNum
-</UL>
-
 <P><STRONG><a name="[56]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd))
 <BR><BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Myi2c_Init
 </UL>
@@ -622,10 +620,10 @@ Global Symbols
 <P><STRONG><a name="[8]"></a>UsageFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_it.o(i.UsageFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[43]"></a>main</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = main &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_SetCursor &rArr; OLED_WriteCommand &rArr; MyI2C_SendByte &rArr; Myi2c_w_sda
+<P><STRONG><a name="[43]"></a>main</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = main &rArr; OLED_ShowChinese &rArr; OLED_ShowImage &rArr; OLED_SetCursor &rArr; OLED_WriteCommand &rArr; MyI2C_SendByte &rArr; Myi2c_w_sda
 </UL>
-<BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowNum
+<BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowChinese
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Clear
 </UL>

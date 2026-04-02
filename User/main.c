@@ -15,8 +15,8 @@ int main(void){
 	//OLED_ShowString(0,2,"Hello World",6);
 	//OLED_ShowImage(0, 0, 64, 8, font_data);
 	//OLED_ShowChinese(0, 0,"大船入港");
-	OLED_ShowNum(32,0,123,3,8);
-
+	//OLED_ShowNum(32,0,123,3,8);
+	OLED_ShowChinese(0, 0, "%");
 	while(1){
 		
 	}

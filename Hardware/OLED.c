@@ -201,6 +201,6 @@ void OLED_ShowChinese(uint8_t x, uint8_t page, char *Chinese){
 }
 void OLED_ShowNum(uint8_t x, uint8_t y, uint32_t num, uint8_t length, uint8_t fontsize){
 	for(uint8_t i = 0; i < length; i++){
-		OLED_ShowChar((x+i)*fontsize, y,  num / Pow(10, length - i - 1) % 10 + '0', fontsize);
+		OLED_ShowChar(x + (i * fontsize), y,  num / Pow(10, length - i - 1) % 10 + '0', fontsize);
 	}
 }
